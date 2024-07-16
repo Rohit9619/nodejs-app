@@ -1,0 +1,11 @@
+groups:
+  - name: example
+    rules:
+      - alert: HighErrorRate
+        expr: sum(rate(http_requests_total{job="nodejs-app", status="500"}[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: "critical"
+        annotations:
+          summary: "High error rate detected"
+          description: "High error rate detected for the Node.js application"

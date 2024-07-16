@@ -1,0 +1,32 @@
+{
+  "annotations": {},
+  "description": "Node.js Application Dashboard",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "HTTP Requests",
+      "targets": [
+        {
+          "expr": "http_requests_total",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Error Rate",
+      "targets": [
+        {
+          "expr": "rate(http_requests_total{status='500'}[5m])",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "refId": "B"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 16,
+  "version": 1
+}
